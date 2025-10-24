@@ -4,420 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOS Harcèlement 57 - Accueil</title>
-    <style>
-        /* Variables CSS pour une cohérence */
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --success-color: #2ecc71;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        /* Reset et styles de base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--secondary-color);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--primary-color);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* Header */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo img {
-            height: 50px;
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a {
-            color: white;
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Main content */
-        main {
-            flex: 1;
-            padding: 2rem 0;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: #2980b9;
-        }
-
-        /* Sections générales */
-        section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--secondary-color);
-        }
-
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-icon {
-            background-color: var(--secondary-color);
-            color: white;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-        }
-
-        .service-content {
-            padding: 1.5rem;
-        }
-
-        .service-content h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        /* Partenaires */
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .partner-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .partner-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .partner-logo {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .partner-logo img {
-            max-height: 100%;
-            max-width: 100%;
-        }
-
-        /* Équipe */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .team-member {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .member-photo {
-            height: 250px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-        }
-
-        .member-info {
-            padding: 1.5rem;
-        }
-
-        .member-info h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .member-role {
-            color: var(--secondary-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        /* Pages légales */
-        .legal-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-        }
-
-        .legal-content h3 {
-            margin: 1.5rem 0 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .legal-content p {
-            margin-bottom: 1rem;
-        }
-
-        .legal-content ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-column ul li a {
-            color: #ddd;
-        }
-
-        .footer-column ul li a:hover {
-            color: white;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav ul {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav ul li {
-                margin: 0.5rem;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .mobile-menu {
-                display: block;
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-            }
-
-            nav {
-                display: none;
-                width: 100%;
-                margin-top: 1rem;
-            }
-
-            nav.active {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
@@ -425,9 +12,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 5.5V7H9V5.5L3 7V9L9 10.5V12H15V10.5L21 9ZM15 19H9V14H15V19ZM18 20V22H6V20H4V14C4 13.45 4.45 13 5 13H19C19.55 13 20 13.45 20 14V20H18Z" fill="white"/>
-                    </svg>
+                    <img src="logo/ECH.png" alt="SOS Harcèlement 57">
                     <h1>SOS Harcèlement 57</h1>
                 </div>
                 <button class="mobile-menu">☰</button>
@@ -446,247 +31,124 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Page d'accueil -->
-        <div id="accueil-page">
-            <!-- Hero Section -->
-            <section class="hero" id="accueil">
-                <div class="container">
-                    <h2>Vous êtes victime ou témoin de harcèlement ?</h2>
-                    <p>Nous sommes là pour vous écouter, vous accompagner et vous aider à agir. Notre équipe de professionnels est à votre disposition.</p>
-                    <a href="#signaler" class="btn">Signaler un cas</a>
-                    <a href="#contact" class="btn btn-secondary">Nous contacter</a>
-                </div>
-            </section>
+        <!-- Hero Section -->
+        <section class="hero" id="accueil">
+            <div class="container">
+                <h2>Vous êtes victime ou témoin de harcèlement ?</h2>
+                <p>Nous sommes là pour vous écouter, vous accompagner et vous aider à agir. Notre équipe de professionnels est à votre disposition.</p>
+                <a href="#contact" class="btn">Nous contacter</a>
+                <a href="lois.html" class="btn btn-secondary">Connaître vos droits</a>
+            </div>
+        </section>
 
-            <!-- Services Section -->
-            <section id="services">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Nos Services</h2>
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nos Services</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="white"/>
+                                <path d="M7 9H17V11H7V9ZM7 12H15V14H7V12Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="service-content">
+                            <h3>Écoute et conseil</h3>
+                            <p>Nos psychologues et juristes vous écoutent et vous conseillent sur les démarches à suivre.</p>
+                        </div>
                     </div>
-                    <div class="services-grid">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="white"/>
-                                    <path d="M7 9H17V11H7V9ZM7 12H15V14H7V12Z" fill="white"/>
-                                </svg>
-                            </div>
-                            <div class="service-content">
-                                <h3>Écoute et conseil</h3>
-                                <p>Nos psychologues et juristes vous écoutent et vous conseillent sur les démarches à suivre.</p>
-                            </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H19C18.47 16.11 15.72 19.78 12 20.93V12H5V6.3L12 3.19V11.99Z" fill="white"/>
+                            </svg>
                         </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H19C18.47 16.11 15.72 19.78 12 20.93V12H5V6.3L12 3.19V11.99Z" fill="white"/>
-                                </svg>
-                            </div>
-                            <div class="service-content">
-                                <h3>Accompagnement juridique</h3>
-                                <p>Nous vous accompagnons dans vos démarches juridiques et vous aidons à constituer votre dossier.</p>
-                            </div>
+                        <div class="service-content">
+                            <h3>Accompagnement juridique</h3>
+                            <p>Nous vous accompagnons dans vos démarches juridiques et vous aidons à constituer votre dossier.</p>
                         </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="white"/>
-                                </svg>
-                            </div>
-                            <div class="service-content">
-                                <h3>Soutien psychologique</h3>
-                                <p>Des séances de soutien psychologique pour vous aider à surmonter cette épreuve.</p>
-                            </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="service-content">
+                            <h3>Soutien psychologique</h3>
+                            <p>Des séances de soutien psychologique pour vous aider à surmonter cette épreuve.</p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Partenaires Section (mini) -->
-            <section id="partenaires-preview">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Nos Partenaires</h2>
+        <!-- Partenaires Section (mini) -->
+        <section id="partenaires-preview">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nos Partenaires</h2>
+                </div>
+                <div class="partners-grid">
+                    <div class="partner-card">
+                        <div class="partner-logo">
+                          <img src="logo/PrevAgir1.webp" alt="PrevAgir"> 
+                        </div>
+                        <h3>Prévagir</h3>
+                        <a href="partenaires.html" class="btn">Voir plus</a>
                     </div>
-                    <div class="partners-grid">
-                        <div class="partner-card">
-                            <div class="partner-logo">
-                                <span>PRÉVAGIR</span>
-                            </div>
-                            <h3>Prévagir</h3>
-                            <a href="partenaires.html" class="btn">Voir plus</a>
+                    <div class="partner-card">
+                        <div class="partner-logo">
+                         <img src="logo/biarrite rp.webp" alt="Blarritz RP">  
                         </div>
-                        <div class="partner-card">
-                            <div class="partner-logo">
-                                <span>Blarritz RP</span>
-                            </div>
-                            <h3>Blarritz RP</h3>
-                            <a href="partenaires.html" class="btn">Voir plus</a>
-                        </div>
+                        <h3>Blarritz RP</h3>
+                        <a href="partenaires.html" class="btn">Voir plus</a>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <!-- Pages secondaires (initialement cachées) -->
-        <div id="equipe-page" style="display: none;">
-            <section>
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Notre Équipe</h2>
-                        <p>Des professionnels engagés à vos côtés</p>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contactez-nous</h2>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.68 14.91 16.08 14.82 16.43 14.94C17.55 15.31 18.76 15.51 20 15.51C20.55 15.51 21 15.96 21 16.51V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.24 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="#3498db"/>
+                            </svg>
+                        </div>
+                        <h3>Téléphone</h3>
+                        <p>07 72 65 22 61</p>
                     </div>
-                    <div class="team-grid">
-                        <div class="team-member">
-                            <div class="image/f p Mathéo.jpeg">
-                            </div>
-                            <div class="member-info">
-                                <h3>Mathéo Felker-Pfrimmer</h3>
-                                <div class="member-role">Président de l'Association</div>
-                                <p>Préside l'entierté de l'Association.</p>
-                            </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#3498db"/>
+                            </svg>
                         </div>
-                        <div class="team-member">
-                            <div class="image/image0.webp">
-                            </div>
-                            <div class="member-info">
-                                <h3>Lucas Chir</h3>
-                                <div class="member-role">Vice-président de l'Association</div>
-                                <p>.</p>
-                            </div>
+                        <h3>Email</h3>
+                        <p>contact@shc57.fr</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="#3498db"/>
+                            </svg>
                         </div>
-                        <div class="team-member">
-                            <div class="member-photo">
-                                [Photo à insérer]
-                            </div>
-                            <div class="member-info">
-                                <h3>Sophie Lambert</h3>
-                                <div class="member-role">Conseillère en insertion</div>
-                                <p>Accompagne les victimes dans leur reconstruction professionnelle.</p>
-                            </div>
-                        </div>
-                        <div class="team-member">
-                            <div class="member-photo">
-                                [Photo à insérer]
-                            </div>
-                            <div class="member-info">
-                                <h3>Thomas Leroy</h3>
-                                <div class="member-role">Éducateur spécialisé</div>
-                                <p>Intervient notamment dans les cas de harcèlement scolaire.</p>
-                            </div>
-                        </div>
+                        <h3>Adresse</h3>
+                        <p>8b route de baronville</p>
+                        <p>57340 Morhange</p>
                     </div>
                 </div>
-            </section>
-        </div>
-
-        <div id="partenaires-page" style="display: none;">
-            <section>
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Nos Partenaires</h2>
-                        <p>Des organisations engagées à nos côtés</p>
-                    </div>
-                    <div class="partners-grid">
-                        <div class="partner-card">
-                            <div class="logo/PrevAgir1.webp">
-                                <span>PRÉVAGIR</span>
-                            </div>
-                            <h3>Prévagir</h3>
-                            <p>Association de prévention des risques psychosociaux en entreprise.</p>
-                            <a href="https://asso-prevagir.com/index.html#accueil" target="_blank" class="btn">Visiter le site</a>
-                        </div>
-                        <div class="partner-card">
-                            <div class="logo/biarrite rp.webp">
-                                <span>Blarritz RP</span>
-                            </div>
-                            <h3>Blarritz RP</h3>
-                            <p>serveur roleplay.</p>
-                            <a href="https://discord.com/invite/zxu2ut2ZeF" target="_blank" class="btn">Visiter le site</a>
-                        </div>
-                        <div class="partner-card">
-                            <div class="logo/dj raccat.png">
-                                <span>DJ raccat_57</span>
-                            </div>
-                            <h3>D.L.raccat_57</h3>
-                            <p>DJ indépendant qui nous suis sur certain dépalcement.</p>
-                            <a href="https://www.instagram.com/dj_raccat_57" target="_blank" class="btn">Voir le profil</a>
-                        </div>
-                        <div class="partner-card">
-                            <div class="partner-logo">
-                                <span>EI</span>
-                            </div>
-                            <h3>Et si c'était vous?</h3>
-                            <p>Campagne de sensibilisation au harcèlement dans les transports.</p>
-                            <a href="https://www.etsicetaitvous.fr" target="_blank" class="btn">Découvrir</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="lois-page" style="display: none;">
-            <section>
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Textes de Loi</h2>
-                        <p>Les bases légales pour lutter contre le harcèlement</p>
-                    </div>
-                    <div class="legal-content">
-                        <h3>Harcèlement moral (Code du travail)</h3>
-                        <p>Article L1152-1 : Aucun salarié ne doit subir les agissements répétés de harcèlement moral qui ont pour objet ou pour effet une dégradation de ses conditions de travail susceptible de porter atteinte à ses droits et à sa dignité, d'altérer sa santé physique ou mentale ou de compromettre son avenir professionnel.</p>
-                        
-                        <h3>Harcèlement sexuel (Code pénal)</h3>
-                        <p>Article 222-33 : Le harcèlement sexuel est le fait d'imposer à une personne, de façon répétée, des propos ou comportements à connotation sexuelle qui soit portent atteinte à sa dignité en raison de leur caractère dégradant ou humiliant, soit créent à son encontre une situation intimidante, hostile ou offensante.</p>
-                        
-                        <h3>Harcèlement scolaire (Code de l'éducation)</h3>
-                        <p>Article L511-3 : Aucun élève ne doit subir, de la part d'autres élèves, des faits de harcèlement ayant pour objet ou pour effet une dégradation de ses conditions d'apprentissage.</p>
-                        
-                        <h3>Cyberharcèlement (Loi n°2018-703)</h3>
-                        <p>Le harcèlement exercé via les communications électroniques est puni de deux ans d'emprisonnement et de 30 000 € d'amende lorsque les faits ont causé une incapacité totale de travail inférieure ou égale à huit jours ou n'ont entraîné aucune incapacité de travail.</p>
-                        
-                        <h3>Obligation de l'employeur</h3>
-                        <p>Article L1152-4 : L'employeur prend toutes dispositions nécessaires en vue de prévenir les agissements de harcèlement moral.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="mentions-legales-page" style="display: none;">
-            <section>
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Mentions Légales</h2>
-                    </div>
-                    <div class="legal-content">
-                        <h3>Éditeur du site</h3>
-                        <p>Association SOS Harcèlement 57<br>
-                        8b route de baronville 57340 Morhange<br>
-                        Téléphone : 07 72 65 22 61<br>
-                        Email : contact@shc57.fr</p>
-                        
-                        <h3>Directeur de la publication</h3>
-                        <p>Timothé Raele, Directeur des services numérique</p>
-                        
-                        <h3>Hébergement</h3>
-                        <p>Ce site est hébergé par :<br>
-                        OVH<br>
-                        2 rue Kellermann<br>
-                        59100 Roubaix, France</p>
-                        
-                        <h3>Propriété intellectuelle</h3>
-                        <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.</p>
-                        
-                        <h3>Protection des données personnelles</h3>
-                        <p>Conformément à la loi "Informatique et Libertés" du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant.</p>
-                        
-                        <h3>Cookies</h3>
-                        <p>Ce site n'utilise pas de cookies à des fins de tracking ou publicitaires. Seuls des cookies techniques essentiels au fonctionnement du site peuvent être utilisés.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -700,18 +162,18 @@
                 <div class="footer-column">
                     <h3>Liens utiles</h3>
                     <ul>
-                        <li><a href="#" onclick="showPage('accueil-page')">Accueil</a></li>
-                        <li><a href="#" onclick="showPage('equipe-page')">Notre Équipe</a></li>
-                        <li><a href="#" onclick="showPage('partenaires-page')">Partenaires</a></li>
-                        <li><a href="#" onclick="showPage('lois-page')">Textes de Loi</a></li>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="equipe.html">Notre Équipe</a></li>
+                        <li><a href="partenaires.html">Partenaires</a></li>
+                        <li><a href="lois.html">Textes de Loi</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Légal</h3>
                     <ul>
-                        <li><a href="#" onclick="showPage('mentions-legales-page')">Mentions légales</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">CGU</a></li>
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                        <li><a href="cgu.html">CGU</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -729,56 +191,6 @@
         </div>
     </footer>
 
-    <script>
-        // Menu mobile
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav').classList.toggle('active');
-        });
-
-        // Navigation entre les pages
-        function showPage(pageId) {
-            // Masquer toutes les pages
-            document.querySelectorAll('main > div').forEach(page => {
-                page.style.display = 'none';
-            });
-            
-            // Afficher la page demandée
-            document.getElementById(pageId).style.display = 'block';
-            
-            // Fermer le menu mobile si ouvert
-            document.querySelector('nav').classList.remove('active');
-            
-            // Scroll vers le haut
-            window.scrollTo(0, 0);
-        }
-
-        // Afficher la page d'accueil par défaut
-        showPage('accueil-page');
-
-        // Animation au défilement
-        window.addEventListener('scroll', function() {
-            const elements = document.querySelectorAll('.service-card, .partner-card, .team-member');
-            
-            elements.forEach(element => {
-                const position = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if(position < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        // Initialisation des animations
-        document.querySelectorAll('.service-card, .partner-card, .team-member').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        });
-
-        // Déclenchement initial des animations
-        window.dispatchEvent(new Event('scroll'));
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
