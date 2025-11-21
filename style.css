@@ -715,9 +715,6 @@ nav ul {
     color: var(--dark-color);
 }
 
-/* --- Styles de la Pop-up --- */
-
-/* Le fond sombre derrière la fenêtre */
 .popup-overlay {
     display: none; /* Caché par défaut */
     position: fixed;
