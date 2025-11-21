@@ -115,3 +115,40 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+
+// --- Gestion de la Pop-up ---
+
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('monPopup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // Vérifier si la pop-up existe sur la page
+    if (popup && closeBtn) {
+        
+        // Vérifier si l'utilisateur a déjà vu la popup (Stockage local)
+        // Si vous voulez qu'elle s'affiche À CHAQUE FOIS, supprimez la condition "if (!localStorage...)"
+        
+        /* if (!localStorage.getItem('popupVue')) {
+            
+            // Ouvrir la pop-up après 3 secondes (3000 ms)
+            setTimeout(() => {
+                popup.style.display = 'flex'; // 'flex' pour centrer
+            }, 3000);
+        } */
+
+        // Fermer la pop-up au clic sur la croix
+        closeBtn.addEventListener('click', function() {
+            popup.style.display = 'none';
+            // Enregistrer que l'utilisateur l'a vue
+            localStorage.setItem('popupVue', 'true');
+        });
+
+        // Fermer si on clique en dehors de la fenêtre blanche
+        window.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+                localStorage.setItem('popupVue', 'true');
+            }
+        });
+    }
+});
