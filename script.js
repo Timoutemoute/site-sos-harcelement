@@ -118,7 +118,7 @@ window.addEventListener('scroll', function() {
 
 // --- Gestion de la Pop-up ---
 
-document.addEventListener('DOMContentLoaded', function() {
+/* document.addEventListener('DOMContentLoaded', function() {
     const popup = document.getElementById('monPopup');
     const closeBtn = document.querySelector('.close-btn');
 
@@ -149,5 +149,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem('popupVue', 'true');
             }
         });
+    }
+}); */
+
+// --- CODE POPUP FORCE (MODE TEST) ---
+
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('monPopup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // On vérifie si le code HTML est bien là
+    if (popup) {
+        console.log("Popup détectée, ouverture dans 1 seconde...");
+        
+        // Ouverture automatique après 1 seconde (1000 ms)
+        setTimeout(() => {
+            popup.style.display = 'flex'; 
+            console.log("Popup ouverte !");
+        }, 1000);
+
+        // Fermeture avec la croix
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                popup.style.display = 'none';
+            });
+        }
+
+        // Fermeture en cliquant à côté
+        window.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    } else {
+        console.error("Erreur : L'élément HTML avec id='monPopup' est introuvable.");
     }
 });
