@@ -127,14 +127,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Vérifier si l'utilisateur a déjà vu la popup (Stockage local)
         // Si vous voulez qu'elle s'affiche À CHAQUE FOIS, supprimez la condition "if (!localStorage...)"
-        
-        /* if (!localStorage.getItem('popupVue')) {
+        if (!localStorage.getItem('popupVue')) {
             
             // Ouvrir la pop-up après 3 secondes (3000 ms)
             setTimeout(() => {
                 popup.style.display = 'flex'; // 'flex' pour centrer
             }, 3000);
-        } */
+        }
 
         // Fermer la pop-up au clic sur la croix
         closeBtn.addEventListener('click', function() {
