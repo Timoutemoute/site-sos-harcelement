@@ -654,3 +654,144 @@ footer {
 .theme-transition * {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+/* --- Ajoutez ou mettez à jour ces styles dans style.css --- */
+
+/* 1. Amélioration du Header pour que tout soit aligné */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1002; /* Pour rester au-dessus du menu mobile */
+}
+
+.logo img {
+    height: 50px; /* Taille fixe pour éviter les déformations */
+    width: auto;
+}
+
+.logo h1 {
+    font-size: 1.2rem; /* Taille adaptée */
+    margin: 0;
+}
+
+/* 2. Style du bouton Boutique (Mise en avant) */
+.btn-shop {
+    background-color: var(--accent-color); /* Utilise votre couleur rouge/orange */
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-shop:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+    color: white;
+}
+
+/* 3. Navigation Desktop par défaut */
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mobile-menu {
+    display: none; /* Caché sur PC */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--dark-color);
+}
+
+/* --- PARTIE CRUCIALE : RESPONSIVE MOBILE --- */
+@media (max-width: 992px) {
+    
+    /* Afficher le bouton burger */
+    .mobile-menu {
+        display: block;
+        z-index: 1002;
+    }
+
+    /* Le menu devient un panneau latéral */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Caché à droite */
+        width: 80%; /* Prend 80% de l'écran */
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--white, #ffffff);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 1001;
+        padding-top: 80px; /* Espace pour ne pas cacher le haut */
+        background-color: #fff; /* Force le fond blanc */
+    }
+
+    /* En mode sombre (si géré par une classe body.dark-mode) */
+    body.dark-mode nav {
+        background-color: #2c3e50;
+    }
+
+    /* Quand on clique sur le menu */
+    nav.active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+        display: block;
+    }
+    
+    /* Ajustement logo mobile */
+    .logo h1 {
+        font-size: 1rem;
+    }
+}
+
+/* Amélioration générale pour mobile */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Plus large sur téléphone */
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr; /* Une seule colonne pour les stats */
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+}
