@@ -20,16 +20,28 @@ window.addEventListener('scroll', function() {
 
 // Initialisation des animations
 document.addEventListener('DOMContentLoaded', function() {
-    const elements = document.querySelectorAll('.service-card, .partner-card, .team-member');
-    
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
+    const menuBtn = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav');
 
-    // Déclenchement initial des animations
-    window.dispatchEvent(new Event('scroll'));
+    if (menuBtn && nav) {
+        menuBtn.addEventListener('click', function() {
+            // Ajoute ou enlève la classe 'active' au menu
+            nav.classList.toggle('active');
+            
+            // Optionnel : Change l'icône du bouton (☰ devient ✕)
+            if (nav.classList.contains('active')) {
+                menuBtn.textContent = '✕';
+                menuBtn.style.position = 'fixed'; // Garde le bouton visible
+                menuBtn.style.right = '20px';     // Ajuste la position
+            } else {
+                menuBtn.textContent = '☰';
+                menuBtn.style.position = 'relative'; // Remet la position normale
+                menuBtn.style.right = '0';
+            }
+        });
+    } else {
+        console.error("Erreur : Le bouton menu ou la navigation n'ont pas été trouvés.");
+    }
 });
 
 // Ajouts à script.js
