@@ -1,4 +1,3 @@
-<!-- Nouveau fichier: temoignages.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,239 +6,185 @@
     <title>Accueil - SOS Harcèlement 57</title>
     <link rel="icon" href="logo/ECH.png">
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header id="super-header">
-    <div class="header-container">
-        <div class="logo-section">
-            <img src="logo/ECH.png" alt="Logo" class="logo-img">
-            <h1>SOS Harcèlement 57</h1>
-        </div>
 
-        <button class="burger-btn" onclick="toggleMenuForce()">
-            ☰
-        </button>
-
-        <nav id="nav-force">
-            <button class="close-menu-btn" onclick="toggleMenuForce()">×</button>
-
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="equipe.html">Notre Équipe</a></li>
-                <li><a href="partenaires.html">Partenaires</a></li>
-                <li><a href="lois.html">Textes de Loi</a></li>
-                <li><a href="temoignages.html">Témoignages</a></li>
-                <li><a href="mentions-legales.html">Mentions Légales</a></li>
-                <li><a href="https://shop.shc57.fr" target="_blank" class="shop-link">Boutique</a></li>
-            </ul>
-            
-            <button id="theme-btn-force" onclick="toggleThemeForce()">🌙</button>
-        </nav>
-    </div>
-</header>
-
-<style>
-    /* --- STYLE INTÉGRÉ POUR FORCER LE FONCTIONNEMENT --- */
-    
-    /* Base du header */
-    #super-header {
-        background: #fff;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        width: 100%;
-        padding: 0.5rem 0;
-    }
-
-    .header-container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    /* Logo */
-    .logo-section {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .logo-img { height: 50px; width: auto; }
-    .logo-section h1 { font-size: 1.2rem; margin: 0; color: #333; }
-
-    /* Navigation Desktop (PC) */
-    #nav-force ul {
-        display: flex;
-        list-style: none;
-        gap: 20px;
-        align-items: center;
-        margin: 0; padding: 0;
-    }
-    
-    #nav-force a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        font-size: 1rem;
-    }
-
-    /* Bouton Boutique */
-    .shop-link {
-        background-color: #e74c3c;
-        color: white !important;
-        padding: 8px 15px;
-        border-radius: 20px;
-        transition: 0.3s;
-    }
-    .shop-link:hover { background-color: #c0392b; transform: scale(1.05); }
-
-    /* Éléments cachés sur PC */
-    .burger-btn { display: none; }
-    .close-menu-btn { display: none; }
-
-    /* --- VERSION MOBILE (C'est là que ça se joue) --- */
-    @media (max-width: 992px) {
-        
-        /* Afficher le burger */
-        .burger-btn {
-            display: block;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #333;
-            z-index: 1002;
-        }
-
-        /* Cacher le menu par défaut */
-        #nav-force {
+    <style>
+        .popup-overlay {
             position: fixed;
             top: 0;
-            right: -100%; /* Caché à droite */
+            left: 0;
             width: 100%;
-            height: 100vh;
-            background: white;
-            flex-direction: column;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            display: none; /* Caché par défaut */
             justify-content: center;
             align-items: center;
-            display: flex;
-            transition: right 0.3s ease-in-out;
-            z-index: 1001;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
         }
 
-        /* Classe ajoutée par le JS pour ouvrir le menu */
-        #nav-force.open {
-            right: 0 !important; /* On force l'affichage */
-        }
-
-        /* Style de la liste en mobile */
-        #nav-force ul {
-            flex-direction: column;
-            gap: 30px;
+        .popup-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
             text-align: center;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            animation: popUpAnim 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        #nav-force a { font-size: 1.4rem; }
+        /* Support du mode sombre pour la pop-up */
+        body.dark-mode .popup-content {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+        body.dark-mode .popup-close {
+            color: #ecf0f1;
+        }
+        body.dark-mode .popup-body p {
+            color: #bdc3c7;
+        }
 
-        /* Bouton Croix pour fermer */
-        .close-menu-btn {
-            display: block;
+        .popup-close {
             position: absolute;
-            top: 20px;
-            right: 25px;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #888;
+            line-height: 1;
             background: none;
             border: none;
-            font-size: 3rem;
-            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .popup-close:hover {
             color: #e74c3c;
         }
-    }
 
-    /* Mode Sombre (Support basique) */
-    body.dark-mode #super-header, 
-    body.dark-mode #nav-force { background-color: #2c3e50; }
-    body.dark-mode .logo-section h1, 
-    body.dark-mode #nav-force a,
-    body.dark-mode .burger-btn { color: white; }
-    #theme-btn-force { background:none; border:none; font-size:1.5rem; cursor:pointer; margin-left:15px; }
-</style>
-
-<script>
-    // --- SCRIPT INTÉGRÉ DU MENU ---
-    function toggleMenuForce() {
-        const nav = document.getElementById('nav-force');
-        // Ajoute ou enlève la classe 'open'
-        nav.classList.toggle('open');
-        console.log("Menu cliqué ! État actuel : " + nav.className);
-    }
-
-    // Script pour le thème (simple)
-    function toggleThemeForce() {
-        document.body.classList.toggle('dark-mode');
-        const btn = document.getElementById('theme-btn-force');
-        if(document.body.classList.contains('dark-mode')) {
-            btn.textContent = '☀️';
-        } else {
-            btn.textContent = '🌙';
+        .popup-header h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
         }
-    }
-</script>
 
-    <!-- Main Content -->
+        .popup-body p {
+            margin-bottom: 25px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .popup-btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white !important;
+            text-decoration: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .popup-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+        }
+
+        @keyframes popUpAnim {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo/ECH.png" alt="SOS Harcèlement 57">
+                    <h1>SOS Harcèlement 57</h1>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="mobile-menu" aria-label="Menu">☰</button>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="equipe.html">Notre Équipe</a></li>
+                        <li><a href="partenaires.html">Partenaires</a></li>
+                        <li><a href="lois.html">Textes de Loi</a></li>
+                        <li><a href="temoignages.html">Témoignages</a></li>
+                        <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                        <li><a href="https://shop.shc57.fr" target="_blank" class="btn-shop">Boutique</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
     <main>
-        <!-- Hero Section -->
         <section class="hero" id="accueil">
             <div class="container">
-                <h2>Vous êtes victime ou témoin de harcèlement ?</h2>
-                <p>Nous sommes là pour vous écouter, vous accompagner et vous aider à agir. Notre équipe de professionnels est à votre disposition.</p>
-                <a href="#contact" class="btn">Nous contacter</a>
-                <a href="lois.html" class="btn btn-secondary">Connaître vos droits</a>
+                <h2>Brisons le silence ensemble</h2>
+                <p>Vous n'êtes plus seul(e). SOS Harcèlement 57 vous écoute, vous accompagne et vous aide à faire valoir vos droits.</p>
+                <div class="hero-buttons">
+                    <a href="tel:0972652261" class="btn">Appeler maintenant</a>
+                    <a href="#contact" class="btn btn-secondary">Nous contacter</a>
+                </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services">
+        <section class="services" id="services">
             <div class="container">
                 <div class="section-title">
-                    <h2>Nos Services</h2>
+                    <h2>Nos Missions</h2>
+                    <p>Comment nous pouvons vous aider</p>
                 </div>
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="white"/>
-                                <path d="M7 9H17V11H7V9ZM7 12H15V14H7V12Z" fill="white"/>
+                                <path d="M20 15.5C18.75 15.5 17.55 15.3 16.43 14.93C16.08 14.82 15.69 14.9 15.41 15.18L13.21 17.38C10.38 15.94 8.06 13.62 6.62 10.79L8.82 8.59C9.1 8.31 9.18 7.92 9.07 7.57C8.7 6.45 8.5 5.25 8.5 4C8.5 3.45 8.05 3 7.5 3H4C3.45 3 3 3.45 3 4C3 13.39 10.61 21 20 21C20.55 21 21 20.55 21 20V16.5C21 15.95 20.55 15.5 20 15.5Z" fill="white"/>
                             </svg>
                         </div>
                         <div class="service-content">
-                            <h3>Écoute et conseil</h3>
-                            <p>Nos psychologues et juristes vous écoutent et vous conseillent sur les démarches à suivre.</p>
+                            <h3>Écoute active</h3>
+                            <p>Une ligne d'écoute bienveillante et confidentielle pour libérer la parole.</p>
                         </div>
                     </div>
+                    
                     <div class="service-card">
                         <div class="service-icon">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H19C18.47 16.11 15.72 19.78 12 20.93V12H5V6.3L12 3.19V11.99Z" fill="white"/>
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
+                                <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2"/>
+                                <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2"/>
                             </svg>
                         </div>
                         <div class="service-content">
-                            <h3>Accompagnement juridique</h3>
-                            <p>Nous vous accompagnons dans vos démarches juridiques et vous aidons à constituer votre dossier.</p>
+                            <h3>Aide juridique</h3>
+                            <p>Orientation vers les textes de loi et accompagnement dans les démarches.</p>
                         </div>
                     </div>
+
                     <div class="service-card">
                         <div class="service-icon">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="white"/>
+                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="white"/>
                             </svg>
                         </div>
                         <div class="service-content">
                             <h3>Soutien psychologique</h3>
-                            <p>Des séances de soutien psychologique pour vous aider à surmonter cette épreuve.</p>
+                            <p>Des séances de soutien pour vous aider à surmonter cette épreuve.</p>
                         </div>
                     </div>
                 </div>
@@ -247,95 +192,50 @@
         </section>
 
         <section class="stats-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Notre Impact</h2>
-            <p>Chiffres clés de notre action contre le harcèlement</p>
-        </div>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">200+</div>
-                <div class="stat-description">Personnes accompagnées</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">95%</div>
-                <div class="stat-description">De satisfaction</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">72h</div>
-                <div class="stat-description">Délai de réponse moyen</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">100%</div>
-                <div class="stat-description">Confidentialité garantie</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section Urgence -->
-<section class="urgent-help">
-    <div class="container">
-        <h3>Besoin d'aide urgente ?</h3>
-        <p>Nous sommes disponibles pour vous écouter et vous orienter immédiatement</p>
-        <div class="urgent-number">09 72 65 22 61</div>
-        <a href="tel:+33972652261" class="btn">Contactez-nous maintenant</a>
-    </div>
-</section>
-
-        <!-- Partenaires Section (mini) -->
-        <section id="partenaires-preview">
             <div class="container">
                 <div class="section-title">
-                    <h2>Nos Partenaires</h2>
+                    <h2>Notre Impact</h2>
+                    <p>Chiffres clés de notre action contre le harcèlement</p>
                 </div>
-                <div class="partners-grid">
-                    <div class="partner-card">
-                        <div class="partner-logo">
-                          <img src="logo/PrevAgir1.webp" alt="PrevAgir"> 
-                        </div>
-                        <h3>Prévagir</h3>
-                        <a href="partenaires.html" class="btn">Voir plus</a>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-description">Personnes accompagnées</div>
                     </div>
-                    <div class="partner-card">
-                        <div class="partner-logo">
-                         <img src="logo/biarrite rp.webp" alt="Blarritz RP">  
-                        </div>
-                        <h3>Blarritz RP</h3>
-                        <a href="partenaires.html" class="btn">Voir plus</a>
+                    <div class="stat-card">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-description">De satisfaction</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">72h</div>
+                        <div class="stat-description">Délai de réponse moyen</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-description">Confidentialité garantie</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact">
+        <section class="urgent-help">
+            <div class="container">
+                <h3>Besoin d'aide urgente ?</h3>
+                <p>Nous sommes disponibles pour vous écouter et vous orienter immédiatement</p>
+                <div class="urgent-number">09 72 65 22 61</div>
+                <a href="tel:0972652261" class="btn btn-shop" style="margin-top:1rem; display:inline-block;">Appeler</a>
+            </div>
+        </section>
+
+        <section id="contact" style="padding-bottom: 0;">
             <div class="container">
                 <div class="section-title">
-                    <h2>Contactez-nous</h2>
+                    <h2>Nous Trouver</h2>
                 </div>
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.68 14.91 16.08 14.82 16.43 14.94C17.55 15.31 18.76 15.51 20 15.51C20.55 15.51 21 15.96 21 16.51V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.24 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="#3498db"/>
-                            </svg>
-                        </div>
-                        <h3>Téléphone</h3>
-                        <p>09 72 65 22 61</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#3498db"/>
-                            </svg>
-                        </div>
-                        <h3>Email</h3>
-                        <p>contact@shc57.fr</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="contact-grid" style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; text-align:center;">
+                    <div class="contact-item">
+                        <div class="icon-box" style="margin:0 auto 1rem;">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="#3498db"/>
                             </svg>
                         </div>
@@ -348,7 +248,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -388,122 +287,49 @@
             </div>
         </div>
     </footer>
-<div id="popup-boutique" class="popup-overlay-force">
-    <div class="popup-box">
-        <button class="popup-close" onclick="fermerPopup()">×</button>
-        
-        <div class="popup-header">
-            <h2>🎉 La boutique est ouverte !</h2>
-        </div>
-        
-        <div class="popup-body">
-            <p>Soutenez SOS Harcèlement 57 en commandant vos produits officiels.</p>
-            <a href="https://shop.shc57.fr" target="_blank" class="popup-btn">
-                Visiter la boutique
-            </a>
+
+    <div id="popup-boutique" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close" onclick="fermerPopup()">×</button>
+            <div class="popup-header">
+                <h2>Boutique Officielle</h2>
+            </div>
+            <div class="popup-body">
+                <p>Soutenez l'association en découvrant nos produits officiels sur notre boutique en ligne !</p>
+                <a href="https://shop.shc57.fr" target="_blank" class="popup-btn">Accéder à la boutique</a>
+            </div>
         </div>
     </div>
-</div>
 
-<style>
-    /* Style forcé directement ici pour être sûr qu'il s'applique */
-    .popup-overlay-force {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 999999; /* Très haut pour passer au-dessus de tout */
-        display: none; /* Caché au départ */
-        justify-content: center;
-        align-items: center;
-        backdrop-filter: blur(4px);
-    }
+    <script src="script.js"></script>
 
-    .popup-box {
-        background: white;
-        padding: 25px;
-        border-radius: 15px;
-        width: 90%;
-        max-width: 400px;
-        text-align: center;
-        position: relative;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        animation: popUpAnim 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .popup-close {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        background: none;
-        border: none;
-        font-size: 30px;
-        cursor: pointer;
-        color: #888;
-        line-height: 1;
-    }
-
-    .popup-header h2 {
-        color: #e74c3c; /* Votre couleur rouge */
-        margin-bottom: 10px;
-        font-size: 1.5rem;
-    }
-
-    .popup-body p {
-        margin-bottom: 20px;
-        color: #333;
-        font-size: 1rem;
-    }
-
-    .popup-btn {
-        display: inline-block;
-        background: #e74c3c;
-        color: white !important;
-        text-decoration: none;
-        padding: 12px 30px;
-        border-radius: 50px;
-        font-weight: bold;
-        box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
-        transition: transform 0.2s;
-    }
-
-    .popup-btn:hover {
-        transform: scale(1.05);
-    }
-
-    @keyframes popUpAnim {
-        0% { transform: scale(0.5); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-</style>
-
-<script>
-    // Script forcé directement ici
-    console.log("Script Popup chargé");
-
-    // Fonction pour ouvrir
-    function ouvrirPopup() {
-        const popup = document.getElementById('popup-boutique');
-        if(popup) {
-            popup.style.display = 'flex';
-            console.log("Popup ouverte !");
+    <script>
+        // Fonction pour ouvrir la popup
+        function ouvrirPopup() {
+            const popup = document.getElementById('popup-boutique');
+            // Vérifie si la popup a déjà été vue lors de cette session
+            if (!sessionStorage.getItem('popupVue')) {
+                if(popup) {
+                    popup.style.display = 'flex';
+                }
+            }
         }
-    }
 
-    // Fonction pour fermer
-    function fermerPopup() {
-        const popup = document.getElementById('popup-boutique');
-        if(popup) {
-            popup.style.display = 'none';
+        // Fonction pour fermer la popup
+        function fermerPopup() {
+            const popup = document.getElementById('popup-boutique');
+            if(popup) {
+                popup.style.display = 'none';
+                // Enregistre que l'utilisateur a vu la popup
+                sessionStorage.setItem('popupVue', 'true');
+            }
         }
-    }
 
-    // Lancement automatique après 1 seconde
-    setTimeout(function() {
-        ouvrirPopup();
-    }, 1000);
-</script>
+        // Déclenchement de la popup après 2 secondes
+        // Utilisation de addEventListener pour ne pas écraser les autres scripts
+        window.addEventListener('load', function() {
+            setTimeout(ouvrirPopup, 2000);
+        });
+    </script>
 </body>
 </html>
