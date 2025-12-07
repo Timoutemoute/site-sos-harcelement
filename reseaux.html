@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Réseaux - SOS Harcèlement 57</title>
+    <link rel="icon" href="logo/ECH.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour la page réseaux */
+        .social-header {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .social-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .social-wall-container {
+            min-height: 600px; /* Espace réservé pour le widget */
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+        
+        /* Boutons de suivi rapide */
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+
+        .btn-yt { background-color: #FF0000; }
+        .btn-tiktok { background-color: #000000; }
+        .btn-insta { background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo/ECH.png" alt="SOS Harcèlement 57">
+                    <h1>SOS Harcèlement 57</h1>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="mobile-menu" aria-label="Menu">☰</button>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="equipe.html">Notre Équipe</a></li>
+                        <li><a href="partenaires.html">Partenaires</a></li>
+                        <li><a href="lois.html">Textes de Loi</a></li>
+                        <li><a href="temoignages.html">Témoignages</a></li>
+                        <li><a href="reseaux.html" class="active">Nos Réseaux</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="social-header">
+        <div class="container">
+            <h1>Notre actualité en direct</h1>
+            <p>Retrouvez nos dernières publications Instagram, TikTok et YouTube</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="social-buttons">
+            <a href="https://www.youtube.com/@sosHarcelement57" target="_blank" class="social-btn btn-yt">YouTube</a>
+            <a href="https://www.tiktok.com/@sosharcelement57" target="_blank" class="social-btn btn-tiktok">TikTok</a>
+            <a href="https://www.instagram.com/sosharcelement57_communication" target="_blank" class="social-btn btn-insta">Instagram</a>
+        </div>
+
+        <div class="social-intro">
+            <p>Découvrez nos actions, nos conseils et nos interventions à travers nos différents réseaux sociaux. Ce fil d'actualité est mis à jour automatiquement.</p>
+        </div>
+
+        <div class="social-wall-container">
+            
+            <div style="text-align: center; padding: 50px; color: #666;">
+                Le mur social charge...<br>
+                <script type="text/javascript" src="https://www.juicer.io/embed/sosharcelement57_communication/embed-code.js" async defer></script>
+            </div>
+            </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="https://shop.shc57.fr" target="_blank">Boutique Officielle</a></li>
+                        <li><a href="equipe.html">Notre Équipe</a></li>
+                        <li><a href="reseaux.html">Nos Réseaux</a></li>
+                        <li><a href="partenaires.html">Partenaires</a></li>
+                        <li><a href="lois.html">Textes de Loi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Légal</h3>
+                    <ul>
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                        <li><a href="cgu.html">CGU</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>09 72 65 22 61</li>
+                        <li>contact@shc57.fr</li>
+                        <li>8b route de baronville, 57340 Morhange</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SOS Harcèlement 57 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
