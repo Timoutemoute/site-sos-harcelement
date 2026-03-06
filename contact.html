@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - SOS Harcèlement 57</title>
+    <link rel="icon" href="logo/ECH.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles supplémentaires uniquement pour la page contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-icon {
+            background-color: var(--secondary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-text strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-text a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .btn-submit {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .map-section {
+            margin-top: 3rem;
+        }
+
+        .map-container {
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mode sombre ajustements */
+        [data-theme="dark"] .form-group input,
+        [data-theme="dark"] .form-group textarea,
+        [data-theme="dark"] .form-group select {
+            background-color: #3d3d3d;
+            border-color: #555;
+            color: #f0f0f0;
+        }
+
+        [data-theme="dark"] .form-group input:focus,
+        [data-theme="dark"] .form-group textarea:focus,
+        [data-theme="dark"] .form-group select:focus {
+            border-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER (copié depuis tes autres pages) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo/ECH.png" alt="SOS Harcèlement 57">
+                    <h1>SOS Harcèlement 57</h1>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="mobile-menu" aria-label="Menu">☰</button>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="equipe.html">Notre Équipe</a></li>
+                        <li><a href="partenaires.html">Partenaires</a></li>
+                        <li><a href="lois.html">Textes de Loi</a></li>
+                        <li><a href="temoignages.html">Témoignages</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="https://shop.shc57.fr" target="_blank" class="btn-shop">Boutique</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN : Contenu de la page contact -->
+    <main>
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contactez-nous</h2>
+                    <p>Nous sommes là pour vous écouter et vous accompagner</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Coordonnées -->
+                    <div class="contact-info">
+                        <h2>Nos coordonnées</h2>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">📞</div>
+                            <div class="info-text">
+                                <strong>Téléphone</strong>
+                                <a href="tel:0972652261">09 72 65 22 61</a>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">✉️</div>
+                            <div class="info-text">
+                                <strong>Email</strong>
+                                <a href="mailto:contact@shc57.fr">contact@shc57.fr</a>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">📍</div>
+                            <div class="info-text">
+                                <strong>Siège social</strong>
+                                8b route de baronville<br>
+                                57340 Morhange
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">🏛️</div>
+                            <div class="info-text">
+                                <strong>Permanence</strong>
+                                1 avenue Robert Schuman<br>
+                                57000 Metz
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">⏰</div>
+                            <div class="info-text">
+                                <strong>Horaires</strong>
+                                Lundi - Vendredi : 6h - 22h<br>
+                                Samedi : 7h - 23h
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulaire de contact -->
+                    <div class="contact-form">
+                        <h2>Envoyer un message</h2>
+                        <form action="https://formspree.io/f/xeerqqnw" method="POST">
+                            <div class="form-group">
+                                <label for="nom">Nom complet *</label>
+                                <input type="text" id="nom" name="nom" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telephone">Téléphone</label>
+                                <input type="tel" id="telephone" name="telephone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sujet">Sujet *</label>
+                                <select id="sujet" name="sujet" required>
+                                    <option value="">Choisissez un sujet</option>
+                                    <option value="aide">Demande d'aide</option>
+                                    <option value="info">Demande d'information</option>
+                                    <option value="partenariat">Proposition de partenariat</option>
+                                    <option value="don">Question sur les dons</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn-submit">Envoyer le message</button>
+                            </div>
+
+                            <p style="font-size: 0.9rem; color: #666;">* Champs obligatoires</p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Carte Google Maps -->
+                <div class="map-section">
+                    <div class="section-title">
+                        <h2>Nous trouver</h2>
+                    </div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2167.512948164875!2d6.6290266756432!3d48.92499439601813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47945f490e21b17b%3A0x44487de15cce3abd!2s8%20Rte%20de%20Baronville%2C%2057340%20Morhange!5e1!3m2!1sfr!2sfr!4v1772790477510!5m2!1sfr!2sfr" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (copié depuis tes autres pages) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SOS Harcèlement 57</h3>
+                    <p>Association d'aide aux victimes de harcèlement sous toutes ses formes.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="https://shop.shc57.fr" target="_blank">Boutique Officielle</a></li>
+                        <li><a href="equipe.html">Notre Équipe</a></li>
+                        <li><a href="partenaires.html">Partenaires</a></li>
+                        <li><a href="lois.html">Textes de Loi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Légal</h3>
+                    <ul>
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                        <li><a href="cgu.html">CGU</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>09 72 65 22 61</li>
+                        <li>contact@shc57.fr</li>
+                        <li>8b route de baronville, 57340 Morhange</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SOS Harcèlement 57 - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT.JS (existant) -->
+    <script src="script.js"></script>
+
+    <!-- 🟢 CODE LIVE CHAT 3CX (à placer juste avant la fermeture du body) -->
+    <call-us-selector phonesystem-url="https://1764.3cx.cloud" party="LiveChat900351"></call-us-selector>
+    <script defer src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js" id="tcx-callus-js" charset="utf-8"></script>
+
+</body>
+</html>
